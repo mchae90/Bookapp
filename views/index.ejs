@@ -1,0 +1,44 @@
+<% include partials/header %>
+
+<div class="main-content">
+	<div class="collage">
+		<% books.forEach(function(item){ %>
+			<% if(item.highlight === true){  %>
+			<div class="item lg-sq" style="background-color: <%= colors[Math.floor(Math.random()*colors.length)] %>">
+				<div class="book-content">
+					<p class="book-title"><%= item.title %></p>
+					<p>-</p>
+					<p class="book-authors"><%= item.authors %></p>
+				</div>
+				<div class="book-description">
+					<p><%= item.description.substr(0, 300) %>...</p>
+				</div>
+				<a href="/books/<%= item.id %>"></a>
+			</div>
+			<% } else {%>
+				<div class="item sq" style="background-color: <%= colors[Math.floor(Math.random()*colors.length)] %>">
+					<div class="book-content">
+						<p class="book-title"><%= item.title %></p>
+						<p>-</p>
+						<p class="book-authors"><%= item.authors %></p>
+					</div>
+					<div class="book-description">
+						<p><%= item.description.substr(0, 300) %>...</p>
+					</div>
+					<a href="/books/<%= item.id %>"></a>
+				</div>
+			<% } %>
+		 <% }) %>
+	</div>
+</div>
+
+<script>
+$(document).ready(function(){
+	$(".item").click(function() {
+  window.location = $(this).find("a").attr("href");
+  return false;
+	});
+}); 
+</script>
+
+<% include partials/footer %>

@@ -1,0 +1,176 @@
+body {
+    font-family: 'Playfair Display', serif;
+}
+
+.wrap {
+    /*background: #FFAD9C;*/
+    height: 100vh;
+}
+
+.jumbotron-landing {
+    background:transparent !important;
+    text-align: center;
+}
+
+.jumbotron-show {
+    background:transparent !important;
+    text-align: center;
+    margin-left: 2.5em;
+    margin-right: 2.5em;
+}
+
+.jumbotron-show img {
+    margin-bottom: .7em;
+}
+
+.jumbotron p {
+    margin-bottom: .7em;
+}
+
+.jumbotron {
+	padding-top: 2em;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+}
+
+.search-book {
+    text-align: center;
+}
+
+#search-input {
+    margin-bottom: .5em;
+    max-width: 25%;
+}
+
+.search-input-wrap {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+}
+
+#search-button {
+    margin-bottom: 1em;
+}
+
+.search-wrap {
+    margin-top: 2em;
+}
+
+.collage {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-auto-rows: 210px;
+	/*grid-gap: .05%;*/
+	height: 100%;
+}
+
+.main-content {
+	padding: 5%;
+	flex: 1 1 80%;
+	/*min-height: 100vh;*/
+}
+
+.item {
+	background-color: #D3D3D3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*background-image: url("https://picsum.photos/800/600/?random");*/
+	background-size: cover;
+}
+
+.item.sq {
+	grid-row: span 1;
+	grid-column: span 1;
+}
+
+.item.lg-sq {
+	grid-row: span 2;
+	grid-column: span 2;
+}
+
+.test {
+	width: 300px;
+	height: 300px;
+	color: blue;
+}
+
+.book-cover {
+   border:1px solid black;
+   border-radius: 5%;
+}
+
+.book-content {
+	text-align: center;
+}
+
+.book-title {
+	font-size: 1.25em;
+}
+
+.book-authors {
+	font-style: italic;
+}
+
+.book-content > p {
+	color: white;
+	margin-bottom: .1em;
+}
+
+.book-description {
+	display: none;
+}
+
+.item:hover{	
+	cursor: pointer;
+}
+
+.item:hover .book-content {
+	display: none;
+}
+
+.item:hover .book-description {
+	transition: visibility 0s, opacity 0.5s linear;
+	display: inline-block;
+	
+}
+
+.book-description {
+	color: white;
+	text-align: center;
+}
+
+.sq .book-description {
+	font-size: .8em;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.fa-goodreads{
+	color: #553b08;
+}
+
+.fa-google{
+	color: #4285f4;
+	margin-left: .8em;
+	margin-bottom: 1em;
+}
+
+.review-wrap {
+	margin-bottom: 1em;
+}
+
+.review-wrap {
+	background-color: #f0f0f0;
+		font-family: 'Montserrat', sans-serif;
+	font-style: italic;
+}
+
+.btn-warning {
+	margin-bottom: .5em;
+}
