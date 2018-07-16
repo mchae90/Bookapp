@@ -9,7 +9,9 @@ var bookRoutes = require("./routes/books"),
     indexRoutes = require("./routes/index");
     
     
-mongoose.connect("mongodb://localhost/bookapp");
+//mongoose.connect("mongodb://localhost/bookapp");
+mongoose.connect("mongodb://user:abc123@ds215910.mlab.com:15910/mchae90_bookapp");
+// mongodb://user:abc123@ds215910.mlab.com:15910/mchae90_bookapp
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
