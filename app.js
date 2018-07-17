@@ -8,8 +8,11 @@ var express = require("express"),
 var bookRoutes = require("./routes/books"),
     indexRoutes = require("./routes/index");
     
+var url = process.env.DATABASEURL || "mongodb://localhost/bookapp"
+    
 //mongoose.connect("mongodb://localhost/bookapp");
-mongoose.connect(process.env.DATABASEURL);
+//mongoose.connect(process.env.DATABASEURL);
+mongoose.connect(url);
 
 
 app.use(bodyParser.urlencoded({ extended: true }));

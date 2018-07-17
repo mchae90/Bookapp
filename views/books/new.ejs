@@ -15,40 +15,42 @@
 
 <div class="container">
   <div class="row">
+    <% if(data.totalItems !== 0) {%>
     <% data["items"].forEach(function(item) { %>
-    <div class="col-md-6 col-lg-2">
-      <div class="card">
-        <% if(item["volumeInfo"].hasOwnProperty("imageLinks")) { %>
-        <img class="card-img-top" src="<%= item["volumeInfo"]["imageLinks"]["thumbnail"] %>">
-        <% } %>
-        <div class="card-body">
-          <h5 class="card-title"><%= item["volumeInfo"]["title"] %></h5>
-          <p class="card-text">By: <%= item["volumeInfo"]["authors"] %></p>
-          <p class="card-text">averageRating: <%= item["volumeInfo"]["averageRating"] %></p>
-          <p class="card-text">ratingsCount: <%= item["volumeInfo"]["ratingsCount"] %></p>
-          <p class="card-text">publishedDate: <%= item["volumeInfo"]["publishedDate"] %></p>
-          <form action="/books" method="POST">
-            <label for="highlight">Highlight</label>
-            <input type="checkbox" id="highlight" name="item[highlight]" value="true">
-            <input type="hidden" name="item[id]" value="<%= item["id"] %>">
-            <input type="hidden" name="item[title]" value="<%= item["volumeInfo"]["title"] %>">
-            <input type="hidden" name="item[subtitle]" value="<%= item["volumeInfo"]["subtitle"] %>">
-            <input type="hidden" name="item[authors]" value="<%= item["volumeInfo"]["authors"] %>">
-            <input type="hidden" name="item[publisher]" value="<%= item["volumeInfo"]["publisher"] %>">
-            <input type="hidden" name="item[publishedDate]" value="<%= item["volumeInfo"]["publishedDate"] %>">
-            <input type="hidden" name="item[description]" value="<%= item["volumeInfo"]["description"] %>">
-            <input type="hidden" name="item[pageCount]" value="<%= item["volumeInfo"]["pageCount"] %>">
-            <input type="hidden" name="item[categories]" value="<%= item["volumeInfo"]["categories"] %>">
-            <% if(item["volumeInfo"].hasOwnProperty("imageLinks")) { %>
-            <input type="hidden" name="item[thumbnail]" value="<%= item["volumeInfo"]["imageLinks"]["thumbnail"] %>">
-            <% } %>
-            <button type="submit" class="btn btn-primary btn-sm">Add</button>
-          </form>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+        <div class="card">
+          <% if(item["volumeInfo"].hasOwnProperty("imageLinks")) { %>
+          <img class="card-img-top" src="<%= item["volumeInfo"]["imageLinks"]["thumbnail"] %>">
+          <% } %>
+          <div class="card-body">
+            <h5 class="card-title"><%= item["volumeInfo"]["title"] %></h5>
+            <p class="card-text">By: <%= item["volumeInfo"]["authors"] %></p>
+            <p class="card-text">averageRating: <%= item["volumeInfo"]["averageRating"] %></p>
+            <p class="card-text">ratingsCount: <%= item["volumeInfo"]["ratingsCount"] %></p>
+            <p class="card-text">publishedDate: <%= item["volumeInfo"]["publishedDate"] %></p>
+            <form action="/books" method="POST">
+              <label for="highlight">Highlight</label>
+              <input type="checkbox" id="highlight" name="item[highlight]" value="true">
+              <input type="hidden" name="item[id]" value="<%= item["id"] %>">
+              <input type="hidden" name="item[title]" value="<%= item["volumeInfo"]["title"] %>">
+              <input type="hidden" name="item[subtitle]" value="<%= item["volumeInfo"]["subtitle"] %>">
+              <input type="hidden" name="item[authors]" value="<%= item["volumeInfo"]["authors"] %>">
+              <input type="hidden" name="item[publisher]" value="<%= item["volumeInfo"]["publisher"] %>">
+              <input type="hidden" name="item[publishedDate]" value="<%= item["volumeInfo"]["publishedDate"] %>">
+              <input type="hidden" name="item[description]" value="<%= item["volumeInfo"]["description"] %>">
+              <input type="hidden" name="item[pageCount]" value="<%= item["volumeInfo"]["pageCount"] %>">
+              <input type="hidden" name="item[categories]" value="<%= item["volumeInfo"]["categories"] %>">
+              <% if(item["volumeInfo"].hasOwnProperty("imageLinks")) { %>
+              <input type="hidden" name="item[thumbnail]" value="<%= item["volumeInfo"]["imageLinks"]["thumbnail"] %>">
+              <% } %>
+              <button type="submit" class="btn btn-primary btn-sm">Add</button>
+            </form>
+          </div>
         </div>
-      </div>
-      </div>
-      <% }) %>
-      </div>
+        </div>
+        <% }) %>
+      <% } %>
+    </div>
 </div>
 
 <% include ../partials/footer %>
