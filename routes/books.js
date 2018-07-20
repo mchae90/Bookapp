@@ -2,6 +2,8 @@ var express = require("express");
 var router  = express.Router();
 var request = require("request");
 var Book = require("../models/book");
+var Comment = require("../models/comment");
+var middleware = require("../middleware");
 
 var colors = ["#1abc9c",
 "#2ecc71",
@@ -22,7 +24,7 @@ var colors = ["#1abc9c",
 "#c0392b",
 "#7f8c8d",
 "#67e399",
-"#FFAD9C"]
+"#FFAD9C"];
 
 //INDEX ROUTE
 router.get("/", function(req, res){
@@ -32,28 +34,37 @@ router.get("/", function(req, res){
        } else {
             res.render("index", {books: allBooks, colors: colors});
        }
-   })
+   });
 });
 
 
 //NEW ROUTE
-router.get("/new", function(req, res){
+router.get("/new", middleware.isLoggedIn, function(req, res){
     var query = req.query.search;
-    var url = "https://www.googleapis.com/books/v1/volumes?q=" + query
+    var url = "https://www.googleapis.com/books/v1/volumes?q=" + query;
     request(url, function (error, response, body) {
         if(!error && response.statusCode == 200) {
             var data = JSON.parse(body);
             res.render("books/new", {data: data});
         }
-    })
+    });
 });
 
 //CREATE ROUTE
-router.post("/", function(req, res) {
-    Book.create(req.body.item, function(err, newBook){
+router.post("/", middleware.isLoggedIn, function(req, res) {
+    var item = req.body.item;
+    var author = {
+        id: req.user._id,
+        username: req.user.username
+    };
+    var newBook = {item: item, author: author};
+    console.log(newBook);
+    console.log(" end ");
+    Book.create(newBook, function(err, newlyCreated){
        if(err){
            console.log(err);
        } else {
+           console.log(newlyCreated);
            res.redirect("/books");
        }
     });
@@ -61,29 +72,30 @@ router.post("/", function(req, res) {
 
 //SHOW ROUTE
 router.get("/:id", function(req, res){
-    Book.find({id: req.params.id}, function(err, book) {
+    Book.find({"item.id": req.params.id}).populate("comments").exec(function(err, book) {
         if(err) {
             console.log(err);
         } else {
-            res.render("books/show", {book: book})
+            res.render("books/show", {book: book});
         }
     });
 });
 
 //EDIT ROUTE
 router.get("/:id/edit", function(req, res){
-    Book.find({id: req.params.id}, function(err, book) {
+    Book.find({"item.id": req.params.id}, function(err, book) {
         if(err) {
             console.log(err);
         } else {
-            res.render("books/edit", {book: book})
+            res.render("books/edit", {book: book});
         }
     });
 });
 
 //UPDATE ROUTE
 router.put("/:id", function(req, res){
-  Book.findOneAndUpdate({id: req.params.id}, req.body.book, function(err, book) {
+  Book.findOneAndUpdate({"item.id": req.params.id}, {item: req.body.book}, function(err, book) {
+      console.log(req.body.book);
       if(err) {
           console.log(err);
       } else {
@@ -94,7 +106,7 @@ router.put("/:id", function(req, res){
 
 //DELETE ROUTE
 router.delete("/:id", function(req,res){
-    Book.findOneAndRemove({id: req.params.id}, function(err, book){
+    Book.findOneAndRemove({"item.id": req.params.id}, function(err, book){
         if(err){
             console.log(err);
         } else{

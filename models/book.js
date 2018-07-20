@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 
 var bookSchema = new mongoose.Schema({
+   item: {
    id: String,
    title: String,
    subtitle: String,
@@ -12,7 +13,20 @@ var bookSchema = new mongoose.Schema({
    categories: String,
    thumbnail: String,
    highlight: Boolean,
-   review: String,
+   review: String},
+   author: {
+     id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User" 
+     } ,
+     username: String
+   },
+   comments: [
+      {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: "Comment"
+      }
+      ],
    dateAdded: {type: Date, default: Date.now}
 });
 
