@@ -1,18 +1,29 @@
 <% include ../partials/header %>
 
-<div class="jumbotron jumbotron-show">
+<div class="container">
   <h1 class="display-4"><%= book[0].item.title %></h1>
   <h5><%= book[0].item.subtitle %></h4>
   <h6><span class="underline">By</span>: <%= book[0].item.authors %></h6>
   <img src="<%= book[0].item.thumbnail %>">
+  <div class="container">
+    <a href="https://www.goodreads.com/search?q=<%= book[0].item.title %> <%= book[0].authors %>" target="_blank"><i class="fab fa-goodreads fa-2x"></i></a>
+  <a href="https://books.google.com/books?id=<%= book[0].item.id %>" target="_blank"><i class="fab fa-google fa-2x"></i></a>
+  </div>
+    <% if(currentUser && book[0].author.id.equals(currentUser._id)) { %>
+  <div class="container">
+  <a class="btn btn-warning btn-sm" href="<%= book[0].item.id %>/edit" role="button">Edit</a>
+  <form action="/books/<%= book[0].item.id %>?_method=DELETE" method="POST">
+    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+  </form>
+  </div>
+  <% } %>
   <p><span class="underline">Description</span>: <%= book[0].item.description %></p>
   <p><span class="underline">Publisher</span>: <%= book[0].item.publisher %></p>
   <p><span class="underline">Published Date</span>: <%= book[0].item.publishedDate %></p>
   <p><span class="underline">Pages</span>: <%= book[0].item.pageCount %></p>
   <p><span class="underline">Categories</span>: <%= book[0].item.categories %></p>
   <p><span class="underline">Added By</span>: <%= book[0].author.username %></p>
-  <a href="https://www.goodreads.com/search?q=<%= book[0].item.title %> <%= book[0].authors %>" target="_blank"><i class="fab fa-goodreads fa-2x"></i></a>
-  <a href="https://books.google.com/books?id=<%= book[0].item.id %>" target="_blank"><i class="fab fa-google fa-2x"></i></a>
+
     <div class="review-wrap">
       <p><b>Review:</b></p>
       <p><%= book[0].item.review %></p>
@@ -22,13 +33,17 @@
         <p>
           <strong><%= comment.author.username %></strong> - <strong><%= comment.text %></strong>
         </p>
+        <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+         <a class="btn btn-outline-warning" href="<%= book[0].item.id %>/comments/<%= comment._id %>/edit" role="button">Edit</a>
+           <form action="/books/<%= book[0].item.id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+             <button type="submit" class="btn btn-danger">Delete</button>
+           </form>
+           <% } %>
       <% }) %>
     </div>
+    <a class="btn btn-primary" href="<%= book[0].item.id %>/comments/new" role="button">Add Comment</a>
   <hr class="my-4">
-  <a class="btn btn-warning" href="<%= book[0].item.id %>/edit" role="button">Edit</a>
-  <form action="/books/<%= book[0].item.id %>?_method=DELETE" method="POST">
-    <button type="submit" class="btn btn-danger">Delete</button>
-  </form>
+
 </div>
 
 <% include ../partials/footer %>

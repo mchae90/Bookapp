@@ -1,7 +1,5 @@
 <% include ../partials/header %>
 
-<%= book[0] %>
-
 <form action="/books/<%= book[0].item.id %>/comments" method="POST">
   <div class="form-group">
     <input type="text" class="form-control" name="comment[text]" placeholder="Comment">

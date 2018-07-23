@@ -82,20 +82,15 @@ router.get("/:id", function(req, res){
 });
 
 //EDIT ROUTE
-router.get("/:id/edit", function(req, res){
-    Book.find({"item.id": req.params.id}, function(err, book) {
-        if(err) {
-            console.log(err);
-        } else {
-            res.render("books/edit", {book: book});
-        }
-    });
+router.get("/:id/edit", middleware.checkBookOwnership, function(req, res){
+        Book.find({"item.id": req.params.id}, function(err, book) {
+                res.render("books/edit", {book: book});
+        });
 });
 
 //UPDATE ROUTE
-router.put("/:id", function(req, res){
+router.put("/:id", middleware.checkBookOwnership, function(req, res){
   Book.findOneAndUpdate({"item.id": req.params.id}, {item: req.body.book}, function(err, book) {
-      console.log(req.body.book);
       if(err) {
           console.log(err);
       } else {
@@ -105,7 +100,7 @@ router.put("/:id", function(req, res){
 });
 
 //DELETE ROUTE
-router.delete("/:id", function(req,res){
+router.delete("/:id", middleware.checkBookOwnership, function(req,res){
     Book.findOneAndRemove({"item.id": req.params.id}, function(err, book){
         if(err){
             console.log(err);
