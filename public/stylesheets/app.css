@@ -67,7 +67,7 @@ body {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	grid-auto-rows: 210px;
-	grid-gap: .5%;
+	grid-gap: .3%;
 	height: 100%;
 }
 
