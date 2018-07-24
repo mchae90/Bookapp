@@ -1,27 +1,29 @@
-body {
-    font-family: 'Playfair Display', serif;
+.jumbotron-show {
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
-.wrap {
-    /*background: #FFAD9C;*/
-    height: 100vh;
+.navbar {
+	background: rgba(255,255,255,0.8);
+}
+
+body {
+	font-family: 'Playfair Display', serif;
+}
+
+
+
+.jumbotron-show {
+	margin-left: 2em;
+	margin-right: 2em;
+	text-align: center;
+	background: none;
 }
 
 .jumbotron-landing {
-    background:transparent !important;
+    background: none;
     text-align: center;
 }
 
-.container {
-    background:transparent !important;
-    text-align: center;
-    margin-left: 2.5em;
-    margin-right: 2.5em;
-}
-
-.container img {
-    margin-bottom: .7em;
-}
 
 .jumbotron p {
     margin-bottom: .7em;
@@ -38,11 +40,15 @@ body {
 }
 
 #search-input {
-    margin-bottom: .5em;
-    max-width: 25%;
+    max-width: 30em;
+}
+
+.search-wrap {
+	text-align: center;
 }
 
 .search-input-wrap {
+	margin-bottom: 1em;
 	display: flex;
 	flex-flow: column wrap;
 	align-items: center;
@@ -55,7 +61,6 @@ body {
 .main-content {
 	padding: 5%;
 	flex: 1 1 80%;
-	/*min-height: 100vh;*/
 }
 
 .collage {
@@ -114,6 +119,10 @@ body {
     margin: 3% auto;
 }
 
+.add-book-btn {
+	display: block;
+}
+
 .book-content > p {
 	color: white;
 	margin-bottom: .1em;
@@ -157,16 +166,12 @@ body {
 .fa-google{
 	color: #4285f4;
 	margin-left: .8em;
-	margin-bottom: 1em;
+	margin-bottom: .5em;
 }
 
 .review-wrap {
 	margin-bottom: 1em;
-}
-
-.review-wrap {
-	background-color: #f0f0f0;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-style: italic;
 }
 
@@ -174,6 +179,123 @@ body {
 	margin-bottom: .5em;
 }
 
-.container {
+.img-show {
+	margin-bottom: 1em;
+}
+
+#add-comment {
+	margin-bottom: 1em;
+}
+
+.edit-delete {
 	display: inline-block;
+}
+
+form {
+	display: inline-block;
+}
+
+#edit-button {
+		margin-bottom: 0;
+}
+
+.flash {
+	margin: .5em auto;
+}
+
+.jumbotron-show .align-right {
+	text-align: right;
+}
+
+.container-register-login {
+	text-align: center;
+}
+
+.password-input {
+	margin-bottom: 1em;
+}
+
+.edit-wrap {
+	text-align: center;
+}
+
+.edit-wrap form{
+	width: 20em;
+}
+
+.form-field {
+	margin-bottom: .5em;
+}
+
+.carouselExampleSlidesOnly {
+	height: 100vh;
+}
+
+.date-added {
+	color: #717567;
+}
+
+.comment-wrap {
+	margin-bottom: 1em;
+}
+
+
+@media (max-width: 576px) {
+	.collage {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-auto-rows: 20em;
+	grid-gap: .5%;
+	height: 100%;
+}
+
+.item {
+	background-color: #D3D3D3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-size: cover;
+	margin-bottom: .5%;
+}
+
+.item.sq {
+	grid-row: span 1;
+	grid-column: span 1;
+}
+
+.item.lg-sq {
+	grid-row: span 1;
+	grid-column: span 1;
+}
+
+}
+
+
+@media (min-width: 576px) and (max-width: 992px) {
+	.collage {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-auto-rows: 1fr;
+	grid-gap: .5%;
+	height: 100%;
+}
+
+.item {
+	background-color: #D3D3D3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-size: cover;
+	margin-bottom: .5%;
+}
+
+.item.sq {
+	grid-row: span 1;
+	grid-column: span 1;
+}
+
+.item.lg-sq {
+	grid-row: span 2;
+	grid-column: span 2;
+}
 }

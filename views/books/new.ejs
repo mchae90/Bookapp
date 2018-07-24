@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 
-<div class="search-wrap">
+<div class="container search-wrap">
   <form action="/books/new" method="GET">
     <div class="form-group search-book">
       <label for="search-input">Search for a book:</label>
@@ -13,6 +13,8 @@
   </form>
 </div>
 
+
+<% if (typeof data !== "undefined") { %>
 <div class="container">
   <div class="row">
     <% if(data.totalItems !== 0) {%>
@@ -23,11 +25,13 @@
           <img class="card-img-top" src="<%= item["volumeInfo"]["imageLinks"]["thumbnail"] %>">
           <% } %>
           <div class="card-body">
-            <h5 class="card-title"><%= item["volumeInfo"]["title"] %></h5>
-            <p class="card-text">By: <%= item["volumeInfo"]["authors"] %></p>
-            <p class="card-text">averageRating: <%= item["volumeInfo"]["averageRating"] %></p>
-            <p class="card-text">ratingsCount: <%= item["volumeInfo"]["ratingsCount"] %></p>
-            <p class="card-text">publishedDate: <%= item["volumeInfo"]["publishedDate"] %></p>
+            <h5 class="card-title"><b><%= item["volumeInfo"]["title"] %></b></h5>
+            <p class="card-text">By: <b><%= item["volumeInfo"]["authors"] %></b></p>
+            <p class="card-text">Published Date: <b><%= item["volumeInfo"]["publishedDate"] %></b></p>
+            <% if(item["volumeInfo"]["averageRating"]) { %>
+            <p class="card-text">Rating: <b><%= item["volumeInfo"]["averageRating"] %></b></p>
+            <p class="card-text">Ratings Count: <b><%= item["volumeInfo"]["ratingsCount"] %></b></p>
+            <% } %>
             <form action="/books" method="POST">
               <label for="highlight">Highlight</label>
               <input type="checkbox" id="highlight" name="item[highlight]" value="true">
@@ -43,7 +47,9 @@
               <% if(item["volumeInfo"].hasOwnProperty("imageLinks")) { %>
               <input type="hidden" name="item[thumbnail]" value="<%= item["volumeInfo"]["imageLinks"]["thumbnail"] %>">
               <% } %>
+              <div class="container add-book-btn">
               <button type="submit" class="btn btn-primary btn-sm">Add</button>
+              </div>
             </form>
           </div>
         </div>
@@ -52,5 +58,6 @@
       <% } %>
     </div>
 </div>
+<% } %>
 
 <% include ../partials/footer %>

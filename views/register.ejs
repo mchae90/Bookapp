@@ -1,11 +1,18 @@
 <% include partials/header %>
 
-<h1>Sign up</h1>
 
-<form action="/register" method="post">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <button type="submit" class="btn btn-primary btn-sm">Add</button>
-</form>
+
+<div class="container-register-login">
+    <h1>Sign up</h1>
+    <form action="/register" method="post">
+        <div>
+            <input class="form-control form-field" type="text" name="username" placeholder="username">
+        </div>
+        <div class="password-input">
+            <input class="form-control form-field" type="password" name="password" placeholder="password">
+        </div>
+            <button type="submit" class="btn btn-primary btn-sm">Register</button>
+    </form>
+</div>
 
 <% include partials/footer %>
