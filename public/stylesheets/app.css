@@ -1,92 +1,32 @@
-.jumbotron-show {
-    font-family: 'Source Sans Pro', sans-serif;
-}
-
-.navbar {
-	background: rgba(255,255,255,0.8);
-}
-
 body {
 	font-family: 'Playfair Display', serif;
 }
 
-.jumbotron-show {
-	margin-left: 2em;
-	margin-right: 2em;
-	text-align: center;
-	background: none;
-}
-
-.jumbotron-landing {
-    background: none;
-    text-align: center;
-}
-
-
-.jumbotron p {
-    margin-bottom: .7em;
-}
-
-
-.search {
-    display: flex;
-    justify-content: center;
-}
-
-.search-book {
-    text-align: center;
-}
-
-#search-input {
-    max-width: 30em;
-}
-
-.search-wrap {
-	text-align: center;
-}
-
-.search-input-wrap {
+#add-comment {
 	margin-bottom: 1em;
-	display: flex;
-	flex-flow: column wrap;
-	align-items: center;
+}
+.add-book-btn {
+	display: block;
 }
 
-#search-button {
-    margin-bottom: 1em;
+.book-description {
+	color: white;
+	text-align: center;
 }
 
-.main-content {
-	padding: 5%;
-	flex: 1 1 80%;
+.btn-warning {
+	margin-bottom: .5em;
 }
 
-.collage {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	grid-auto-rows: 210px;
-	grid-gap: .3%;
-	height: 100%;
+.book-content > p {
+	color: white;
+	margin-bottom: .1em;
 }
 
-.item {
-	background-color: #D3D3D3;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-size: cover;
-	margin-bottom: 1%;
+.book-description {
+	display: none;
 }
 
-.item.sq {
-	grid-row: span 1;
-	grid-column: span 1;
-}
-
-.item.lg-sq {
-	grid-row: span 2;
-	grid-column: span 2;
-}
 
 .book-content, .book-description {
 	padding: 1em;
@@ -117,63 +57,35 @@ body {
     margin: 3% auto;
 }
 
-.add-book-btn {
-	display: block;
+.collage {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-auto-rows: 210px;
+	grid-gap: .3%;
+	height: 100%;
 }
 
-.book-content > p {
-	color: white;
-	margin-bottom: .1em;
-}
-
-.book-description {
-	display: none;
-}
-
-.item:hover{	
-	cursor: pointer;
-	opacity: .9;
-}
-
-.book-description {
-	color: white;
+.container-register-login {
 	text-align: center;
 }
 
-.sq .book-description {
-	font-size: .8em;
+.carouselExampleSlidesOnly {
+	height: 100vh;
 }
 
-.underline {
-	text-decoration: underline;
+.date-added {
+	color: #717567;
 }
 
-.fa-goodreads{
-	color: #553b08;
-}
-
-.fa-google{
-	color: #4285f4;
-	margin-left: .8em;
-	margin-bottom: .5em;
-}
-
-.review-wrap {
-	margin-bottom: 1em;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-style: italic;
-}
-
-.btn-warning {
-	margin-bottom: .5em;
-}
-
-.img-show {
+.comment-wrap {
 	margin-bottom: 1em;
 }
+.edit-wrap {
+	text-align: center;
+}
 
-#add-comment {
-	margin-bottom: 1em;
+.edit-wrap form{
+	width: 20em;
 }
 
 .edit-delete {
@@ -192,42 +104,127 @@ form {
 	margin: .5em auto;
 }
 
-.jumbotron-show .align-right {
-	text-align: right;
+.fa-goodreads{
+	color: #553b08;
 }
 
-.container-register-login {
-	text-align: center;
+.fa-google{
+	color: #4285f4;
+	margin-left: .8em;
+	margin-bottom: .5em;
 }
 
-.password-input {
+.img-show {
 	margin-bottom: 1em;
 }
 
-.edit-wrap {
-	text-align: center;
-}
-
-.edit-wrap form{
-	width: 20em;
+.jumbotron-show .align-right {
+	text-align: right;
 }
 
 .form-field {
 	margin-bottom: .5em;
 }
 
-.carouselExampleSlidesOnly {
-	height: 100vh;
+.item {
+	background-color: #D3D3D3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-size: cover;
+	margin-bottom: 1%;
 }
 
-.date-added {
-	color: #717567;
+.item.sq {
+	grid-row: span 1;
+	grid-column: span 1;
 }
 
-.comment-wrap {
+.item.lg-sq {
+	grid-row: span 2;
+	grid-column: span 2;
+}
+
+.jumbotron-show {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.jumbotron-show {
+	margin-left: 2em;
+	margin-right: 2em;
+	text-align: center;
+	background: none;
+}
+
+.jumbotron-landing {
+    background: none;
+    text-align: center;
+}
+
+.jumbotron p {
+    margin-bottom: .7em;
+}
+
+.main-content {
+	padding: 5%;
+	flex: 1 1 80%;
+}
+
+.navbar {
+	background: rgba(255,255,255,0.8);
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+}
+
+.search-book {
+    text-align: center;
+}
+
+#search-input {
+    max-width: 30em;
+}
+
+.search-wrap {
+	text-align: center;
+}
+
+.search-input-wrap {
+	margin-bottom: 1em;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+}
+
+#search-button {
+    margin-bottom: 1em;
+}
+
+
+.item:hover{	
+	cursor: pointer;
+	opacity: .9;
+}
+
+.sq .book-description {
+	font-size: .8em;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+.review-wrap {
+	margin-bottom: 1em;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-style: italic;
+}
+
+.password-input {
 	margin-bottom: 1em;
 }
-
 
 @media (max-width: 576px) {
 	.collage {
@@ -256,9 +253,7 @@ form {
 	grid-row: span 1;
 	grid-column: span 1;
 }
-
 }
-
 
 @media (min-width: 576px) and (max-width: 992px) {
 	.collage {
