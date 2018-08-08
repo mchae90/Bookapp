@@ -3,7 +3,7 @@
 
 <div class="jumbotron jumbotron-show">
   <h1 class="display-4"><%= book[0].item.title %></h1>
-  <h6><%= book[0].item.subtitle %></h4>
+  <h5><%= book[0].item.subtitle %></h5>
   <h6>by <b><%= book[0].item.authors %></b></h6>
   <img class="img-show" src="<%= book[0].item.thumbnail %>">
   <p>Submitted by: <i class="fa fa-user"></i> <b><%= book[0].author.username %></b></p> 
@@ -23,7 +23,6 @@
   
 
   <p><b>Description</b>: <%= book[0].item.description %></p>
-  <p><b>Publisher</b>: <%= book[0].item.publisher %></p>
   <p><b>Published Date</b>: <%= book[0].item.publishedDate %></p>
   <p><b>Pages</b>: <%= book[0].item.pageCount %></p>
   <p><b>Categories</b>: <%= book[0].item.categories %></p>

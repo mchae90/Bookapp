@@ -10,9 +10,6 @@
 					<p>-</p>
 					<p class="book-authors"><%= item.item.authors %></p>
 				</div>
-				<div class="book-description">
-					<p><%= item.item.description.substr(0, 200) %>...</p>
-				</div>
 				<a href="/books/<%= item.item.id %>"></a>
 			</div>
 			<% } else {%>
@@ -21,9 +18,6 @@
 						<p class="book-title"><%= item.item.title %></p>
 						<p>-</p>
 						<p class="book-authors"><%= item.item.authors %></p>
-					</div>
-					<div class="book-description">
-						<p><%= item.item.description.substr(0, 200) %>...</p>
 					</div>
 					<a href="/books/<%= item.item.id %>"></a>
 				</div>
