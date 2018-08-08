@@ -24,12 +24,9 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                     req.flash("error", "Something went wrong.");
                     console.log(err);
                 } else {
-                    console.log("hi");
-                    console.log(book);
                     comment.author.id = req.user._id;
                     comment.author.username = req.user.username;
                     comment.save();
-                    console.log(comment);
                     book[0].comments.push(comment);
                     book[0].save();
                     req.flash("success", "Sucessfully added comment.");
@@ -41,12 +38,10 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 });
 
 router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, res) {
-    console.log(req.params.id);
     Comment.findById(req.params.comment_id, function(err, foundComment){
         if(err){
             res.redirect("back");
         } else {
-            console.log(foundComment);
             res.render("comments/edit", {book_id: req.params.id, comment: foundComment});
         }
     });

@@ -1,6 +1,5 @@
 <% include ../partials/header %>
 
-
 <div class="jumbotron jumbotron-show">
   <h1 class="display-4"><%= book[0].item.title %></h1>
   <h5><%= book[0].item.subtitle %></h5>
@@ -8,55 +7,46 @@
   <img class="img-show" src="<%= book[0].item.thumbnail %>">
   <p>Submitted by: <i class="fa fa-user"></i> <b><%= book[0].author.username %></b></p> 
   <div class="icons">
-    <div><b>View on:</b></div>
+    <div>
+      <b>View on:</b>
+    </div>
     <a href="https://www.goodreads.com/search?q=<%= book[0].item.title %> <%= book[0].authors %>" target="_blank"><i class="fab fa-goodreads fa-2x"></i></a>
     <a href="https://books.google.com/books?id=<%= book[0].item.id %>" target="_blank"><i class="fab fa-google fa-2x"></i></a>
   </div>
     <% if(currentUser && book[0].author.id.equals(currentUser._id)) { %>
   <div class="edit-delete">
-  <a class="btn btn-warning btn-sm" id="edit-button" href="<%= book[0].item.id %>/edit" role="button">Edit</a>
-  <form action="/books/<%= book[0].item.id %>?_method=DELETE" method="POST">
-    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-  </form>
+    <a class="btn btn-warning btn-sm" id="edit-button" href="<%= book[0].item.id %>/edit" role="button">Edit</a>
+    <form action="/books/<%= book[0].item.id %>?_method=DELETE" method="POST">
+      <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+    </form>
   </div>
   <% } %>
-  
-
   <p><b>Description</b>: <%= book[0].item.description %></p>
   <p><b>Published Date</b>: <%= book[0].item.publishedDate %></p>
   <p><b>Pages</b>: <%= book[0].item.pageCount %></p>
   <p><b>Categories</b>: <%= book[0].item.categories %></p>
-  
   <% if(book[0].item.review) { %>
     <div class="review-wrap">
       <p>Review by  <i class="fa fa-user"></i> <b><%= book[0].author.username %></b></p>
       <p><%= book[0].item.review %></p>
     </div>
   <% } %>
-      <hr class="my-4">
-      <h3>Comments</h3>
+    <hr class="my-4">
+    <h3>Comments</h3>
     <div class="comment-wrap">
         <% book[0].comments.forEach(function(comment){ %>
-
           <b><i class="fa fa-user"></i> <%= comment.author.username %> </b> - <span> <%= comment.text %></span>
-
         <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
          <a class="btn btn-outline-warning btn-sm" href="<%= book[0].item.id %>/comments/<%= comment._id %>/edit" role="button">Edit</a>
-           
            <form action="/books/<%= book[0].item.id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
              <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
            </form>
-
            <% } %>
       <% }) %>
-
     </div>
-          <div>
-          <a class="btn btn-primary btn-sm" id="add-comment" href="<%= book[0].item.id %>/comments/new" role="button">Add</a>
-          </div>
-
+      <div>
+        <a class="btn btn-primary btn-sm" id="add-comment" href="<%= book[0].item.id %>/comments/new" role="button">Add</a>
+      </div>
 </div>
-
-
 
 <% include ../partials/footer %>
