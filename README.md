@@ -2,7 +2,7 @@
 
 See the code live: https://fast-lake-81482.herokuapp.com
 
-This is an app for adding and reviewing your favorite books.  It connects to the google books API.
+Simple app connecting to google books api allowing users to add, remove, and post reviews.
 
 Stack info:
 
